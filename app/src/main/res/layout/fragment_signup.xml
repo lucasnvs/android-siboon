@@ -1,0 +1,66 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    android:theme="@style/Theme.App.NoActionBar">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_title"
+        android:textStyle="bold"
+        android:textColor="@color/app_principal_color"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/signup_et_fullname"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/signup_et_email"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/editTextCpf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CPF"
+        android:inputType="number"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/editTextPasswordSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/buttonSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_btn_register"
+        android:backgroundTint="@color/app_principal_color"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signup_has_registration"
+        android:textColor="@color/app_principal_color"
+        android:textSize="14sp"
+        android:layout_marginTop="24dp"
+        android:id="@+id/textViewSignupLink"/>
+</LinearLayout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp">
+
+            <ImageView
+                android:id="@+id/imgProfileAvatar"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/baseline_account_circle_24"
+                android:contentDescription="@string/user_picture"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_account_circle_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/imgProfileAvatar"
+                android:fontFamily="sans-serif-medium"
+                android:text="João Ninguém"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/imgProfileAvatar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvProfileEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvProfileName"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@id/imgProfileAvatar"
+                android:text="joao@email.com"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/imgProfileAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
+
+            <ImageView
+                android:id="@+id/imgSettings"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/baseline_settings_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/tvOptionPersonalData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Dados Pessoais"
+                android:textColor="@color/black"
+                android:drawablePadding="8dp"
+                app:drawableEndCompat="@drawable/baseline_chevron_right_24" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/tvOptionAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Endereço"
+                android:textColor="@color/black"
+                android:drawablePadding="8dp"
+                app:drawableEndCompat="@drawable/baseline_chevron_right_24" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/tvOptionOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Meus Pedidos"
+                android:textColor="@color/black"
+                android:drawablePadding="8dp"
+                app:drawableEndCompat="@drawable/baseline_chevron_right_24" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/tvOptionSupport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Autoatendimento"
+                android:textColor="@color/black"
+                android:drawablePadding="8dp"
+                app:drawableEndCompat="@drawable/baseline_chevron_right_24" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/red"
+            android:text="Sair da sessão"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</ScrollView>
