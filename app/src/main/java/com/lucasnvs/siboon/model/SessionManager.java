@@ -11,6 +11,9 @@ public class SessionManager {
     private SharedPreferences.Editor editor;
 
     public SessionManager(Context context) {
+        if (context == null) {
+            throw new IllegalArgumentException("Context cannot be null");
+        }
         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }

@@ -3,6 +3,7 @@ package com.lucasnvs.siboon.ui.profile;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,12 @@ import androidx.navigation.Navigation;
 
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.databinding.FragmentProfileBinding;
+import com.lucasnvs.siboon.model.SessionManager;
 
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
+    private SessionManager sessionManager;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,13 +33,14 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        this.sessionManager = new SessionManager(requireContext());
 
         ProfileViewModel profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
         profileViewModel.getUserName().observe(getViewLifecycleOwner(), name -> binding.tvProfileName.setText(name));
         profileViewModel.getUserEmail().observe(getViewLifecycleOwner(), email -> binding.tvProfileEmail.setText(email));
 
-        if (!isUserLoggedIn()) {
+        if (!sessionManager.isLoggedIn()) {
             redirectToLogin(view);
         } else {
             loadUserData(profileViewModel);
@@ -46,10 +50,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setupListeners(ProfileViewModel profileViewModel) {
-        binding.btnLogout.setOnClickListener(v -> {
-            logout();
-            redirectToLogin(requireView());
-        });
+        binding.btnLogout.setOnClickListener(v -> logout());
 
         binding.tvOptionPersonalData.setOnClickListener(v -> {
         });
@@ -70,21 +71,16 @@ public class ProfileFragment extends Fragment {
     }
 
     private void logout() {
-        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.apply();
-    }
-
-    private boolean isUserLoggedIn() {
-        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("isLoggedIn", true); // TODO: b: false
+        sessionManager.clear();
+        redirectToLogin(requireView());
     }
 
     private void redirectToLogin(View view) {
         NavController navController = Navigation.findNavController(view);
+        Log.d("ProfileFragment", "Navigating to login");
         navController.navigate(R.id.navigation_login);
     }
+
 
     @Override
     public void onDestroyView() {

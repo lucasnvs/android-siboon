@@ -50,12 +50,8 @@ public class SectionRepository {
                             }
                         }
                         return sections;
-                    }).onErrorReturn(throwable -> {
-                        return new ArrayList<>();
-                    });
-                }).onErrorReturn(throwable -> {
-                    return new ArrayList<>();
-                });
+                    }).onErrorReturn(throwable -> new ArrayList<>());
+                }).onErrorReturn(throwable -> new ArrayList<>());
     }
 
     private Single<List<Product>> fetchProductsForSection(NetworkSection section) {

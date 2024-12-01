@@ -12,6 +12,8 @@ public class ProfileViewModel extends ViewModel {
     public ProfileViewModel() {
         userName.setValue("Usuário Desconhecido");
         userEmail.setValue("email@exemplo.com");
+
+        loadUserData();
     }
 
     public LiveData<String> getUserName() {
@@ -28,5 +30,9 @@ public class ProfileViewModel extends ViewModel {
 
     public void setUserEmail(String email) {
         userEmail.setValue(email);
+    }
+
+    public void loadUserData() {
+
     }
 }

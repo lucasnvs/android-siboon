@@ -16,15 +16,14 @@ public class RetrofitClient {
         SessionManager sessionManager = new SessionManager(context);
         String token = sessionManager.getToken();
 
-        if (token == null) {
-            throw new IllegalStateException("Token de autenticação não encontrado");
+        OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
+
+        if (token != null) {
+            AuthInterceptor authInterceptor = new AuthInterceptor(token);
+            httpClientBuilder.addInterceptor(authInterceptor);
         }
 
-        AuthInterceptor authInterceptor = new AuthInterceptor(token);
-
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(authInterceptor)
-                .build();
+        OkHttpClient okHttpClient = httpClientBuilder.build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(SiboonApi.BASE_URL)
