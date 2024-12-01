@@ -49,18 +49,6 @@ public class HomeViewModel extends ViewModel {
         return products;
     }
 
-//    public void loadSections() {
-//        List<Product> products = new ArrayList<>();
-//        products.add(new Product("Produto 1", 10.0, "url1"));
-//        products.add(new Product("Produto 2", 20.0, "url2"));
-//
-//        List<Section> mockSections = new ArrayList<>();
-//        mockSections.add(new Section("Seção 1", products));
-//        mockSections.add(new Section("Seção 2", products));
-//
-//        this.sections.setValue(mockSections);
-//    }
-
     public void loadSections() {
         compositeDisposable.add(
                 sectionRepository.fetchSectionsWithProducts()

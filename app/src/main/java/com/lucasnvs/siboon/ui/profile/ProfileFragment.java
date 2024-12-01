@@ -11,13 +11,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.lucasnvs.siboon.R;
+import com.lucasnvs.siboon.data.repository.UserRepository;
 import com.lucasnvs.siboon.databinding.FragmentProfileBinding;
 import com.lucasnvs.siboon.model.SessionManager;
+import com.lucasnvs.siboon.ui.home.HomeViewModel;
 
 public class ProfileFragment extends Fragment {
 
@@ -35,15 +38,22 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         this.sessionManager = new SessionManager(requireContext());
 
-        ProfileViewModel profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+        UserRepository userRepository = new UserRepository(requireContext());
+        ProfileViewModel profileViewModel = new ViewModelProvider(this, new ViewModelProvider.Factory() {
+            @NonNull
+            @Override
+            public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
+                return (T) new ProfileViewModel(userRepository);
+            }
+        }).get(ProfileViewModel.class);
 
-        profileViewModel.getUserName().observe(getViewLifecycleOwner(), name -> binding.tvProfileName.setText(name));
-        profileViewModel.getUserEmail().observe(getViewLifecycleOwner(), email -> binding.tvProfileEmail.setText(email));
+        profileViewModel.getUser().observe(getViewLifecycleOwner(), user -> {
+            binding.tvProfileName.setText(user.getName());
+            binding.tvProfileEmail.setText(user.getEmail());
+        });
 
         if (!sessionManager.isLoggedIn()) {
             redirectToLogin(view);
-        } else {
-            loadUserData(profileViewModel);
         }
 
         setupListeners(profileViewModel);
@@ -65,10 +75,6 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void loadUserData(ProfileViewModel profileViewModel) {
-        profileViewModel.setUserName("João Ninguém");
-        profileViewModel.setUserEmail("joao@email.com");
-    }
 
     private void logout() {
         sessionManager.clear();

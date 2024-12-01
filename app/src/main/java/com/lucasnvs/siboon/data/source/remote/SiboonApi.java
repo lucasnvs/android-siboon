@@ -25,4 +25,7 @@ public interface SiboonApi {
 
     @POST("usuarios/login")
     Single<ApiResponse<LoginResponse>> login(@Body LoginRequest request);
+
+    @GET("usuarios/me")
+    Single<ApiResponse<NetworkUser>> me();
 }
