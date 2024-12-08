@@ -17,9 +17,12 @@ public class ProductMapper implements IMapper<Product, NetworkProduct>{
         }
 
         return new Product(
+                networkProduct.getId(),
                 networkProduct.getName(),
                 networkProduct.getPriceBrl() != null ? networkProduct.getPriceBrl() : 0.0,
-                networkProduct.getPrincipalImg()
+                networkProduct.getPrincipalImg(),
+                networkProduct.getDescription(),
+                networkProduct.getMaxInstallments()
         );
     }
 

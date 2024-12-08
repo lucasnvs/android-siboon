@@ -1,12 +1,16 @@
 package com.lucasnvs.siboon.ui.home;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,7 +65,6 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
         }
     }
 
-    // Método para atualizar a lista de seções, se necessário
     public void setSections(List<Section> sections) {
         this.sectionList.clear();
         this.sectionList.addAll(sections);

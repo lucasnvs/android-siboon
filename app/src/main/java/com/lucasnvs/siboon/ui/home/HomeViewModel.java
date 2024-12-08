@@ -30,11 +30,9 @@ public class HomeViewModel extends ViewModel {
 
     public MutableLiveData<List<Product>> products = new MutableLiveData<>();
 
-    private final ProductRepository productRepository;
     private final SectionRepository sectionRepository;
 
-    public HomeViewModel(ProductRepository productRepository, SectionRepository sectionRepository) {
-        this.productRepository = productRepository;
+    public HomeViewModel(SectionRepository sectionRepository) {
         this.sectionRepository = sectionRepository;
 
         mText = new MutableLiveData<>();
@@ -58,18 +56,6 @@ public class HomeViewModel extends ViewModel {
                                 response -> {
                                     this.sections.postValue(response);
                                 },
-                                throwable -> errorLiveData.postValue(throwable.getMessage())
-                        )
-        );
-    }
-
-    public void loadProducts() {
-        compositeDisposable.add(
-                productRepository.fetchProducts()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(
-                                products -> this.products.postValue(products),
                                 throwable -> errorLiveData.postValue(throwable.getMessage())
                         )
         );

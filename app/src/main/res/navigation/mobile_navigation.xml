@@ -11,6 +11,12 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/navigation_product_detail"
+        android:name="com.lucasnvs.siboon.ui.ProductDetail.ProductDetailFragment"
+        android:label="Detalhes"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.lucasnvs.siboon.ui.favorite.FavoriteFragment"
         android:label="@string/title_favorites"
@@ -26,22 +32,11 @@
         android:id="@+id/navigation_login"
         android:name="com.lucasnvs.siboon.ui.auth.LoginFragment"
         android:label="@string/title_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_navigation_login_to_navigation_signup"
-            app:destination="@id/navigation_signup" />
-    </fragment>
+        tools:layout="@layout/fragment_login" />
 
     <fragment
         android:id="@+id/navigation_signup"
         android:name="com.lucasnvs.siboon.ui.auth.SignupFragment"
         android:label="@string/title_signup"
-        tools:layout="@layout/fragment_signup" >
-        <action
-            android:id="@+id/action_navigation_signup_to_navigation_login"
-            app:destination="@id/navigation_login" />
-        <action
-            android:id="@+id/action_navigation_signup_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
-    </fragment>
+        tools:layout="@layout/fragment_signup" />
 </navigation>

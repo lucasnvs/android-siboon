@@ -6,7 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {LocalProduct.class}, version = 1, exportSchema = false)
+import com.lucasnvs.siboon.utils.Constants;
+
+@Database(entities = {LocalProduct.class}, version = Constants.DB_VERSION, exportSchema = false)
 public abstract class SiboonDatabase extends RoomDatabase {
 
     private static volatile SiboonDatabase instance;
@@ -18,7 +20,7 @@ public abstract class SiboonDatabase extends RoomDatabase {
             synchronized (SiboonDatabase.class) {
                 if (instance == null) {
                     instance = Room.databaseBuilder(context.getApplicationContext(),
-                                    SiboonDatabase.class, "siboon_database")
+                                    SiboonDatabase.class, Constants.DB_NAME)
                             .fallbackToDestructiveMigration()
                             .build();
                 }

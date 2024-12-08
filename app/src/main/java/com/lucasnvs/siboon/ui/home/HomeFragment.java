@@ -32,13 +32,12 @@ public class HomeFragment extends Fragment {
 
     @SuppressLint("NotifyDataSetChanged")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ProductRepository productRepository = new ProductRepository(requireContext());
         SectionRepository sectionRepository = new SectionRepository(requireContext());
         homeViewModel = new ViewModelProvider(this, new ViewModelProvider.Factory() {
             @NonNull
             @Override
             public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-                return (T) new HomeViewModel(productRepository, sectionRepository);
+                return (T) new HomeViewModel(sectionRepository);
             }
         }).get(HomeViewModel.class);
 

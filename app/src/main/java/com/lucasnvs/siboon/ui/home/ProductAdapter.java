@@ -1,6 +1,8 @@
 package com.lucasnvs.siboon.ui.home;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.model.Product;
+import com.lucasnvs.siboon.ui.ProductDetail.ProductDetailFragment;
+import com.lucasnvs.siboon.utils.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -40,14 +46,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
         holder.title.setText(product.getTitle());
-        holder.price.setText("R$ " + product.getPrice());
+        holder.price.setText(String.format("R$ %s", product.getPrice()));
 
-        Picasso.get().load("http://10.0.2.2/siboon/" + product.getImageUrl())
+        Picasso.get().load(Constants.BASE_URL + product.getImageUrl())
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
                 .into(holder.image);
 
-        // Implementar clique para o botão de compra e favoritar, se necessário
+        holder.itemView.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+
+            Bundle args = new Bundle();
+            args.putLong(ProductDetailFragment.ARG_PRODUCT_ID, product.getId());
+
+            navController.navigate(R.id.navigation_product_detail, args);
+        });
+
+        // Click Buy
+        // Click Favorite
     }
 
     @Override

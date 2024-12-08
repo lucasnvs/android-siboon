@@ -26,7 +26,7 @@ public class SignupFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.buttonSignup.setOnClickListener(v -> {
-            // Adicione aqui a lógica de cadastro usando a sua API
+            // Cadastro com API
         });
     }
 }

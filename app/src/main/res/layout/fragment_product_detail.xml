@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/product_image_view"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background" />
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,36 +16,36 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/product_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Camiseta Nike SB Oficial Japan"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/product_price_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R$ 190,00"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/product_installment_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ou até 3x de R$ 63,33"
             android:textSize="14sp" />
-
     </LinearLayout>
 
     <TextView
+        android:id="@+id/product_description_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:layout_weight="1"
-        android:text="Lorem ipsum dolor sit amet, qui aliquid voluptas aut dolorem repudiandae. Sed tincidunt facere voluptas qui fugit quibusdam et mollitia corporis est facere voluptates non aspernores tempore. Sed temporus non est in recusandae velit voluptatem corporis."
         android:textSize="14sp" />
 
     <Button
+        android:id="@+id/buy_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/app_principal_color"
@@ -54,5 +53,4 @@
         android:text="Comprar"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
-
 </LinearLayout>
