@@ -1,7 +1,6 @@
 package com.lucasnvs.siboon.ui.auth;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -16,7 +15,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class LoginViewModel extends ViewModel {
 
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private UserRepository userRepository;
     private SessionManager sessionManager;
 

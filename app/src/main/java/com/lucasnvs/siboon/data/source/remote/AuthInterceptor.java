@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class AuthInterceptor implements Interceptor {
 
-    private String token;
+    private final String token;
 
     public AuthInterceptor(String token) {
         this.token = token;

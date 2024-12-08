@@ -1,12 +1,9 @@
 package com.lucasnvs.siboon.data.repository;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.lucasnvs.siboon.data.source.remote.ApiResponse;
 import com.lucasnvs.siboon.data.source.remote.LoginRequest;
 import com.lucasnvs.siboon.data.source.remote.LoginResponse;
-import com.lucasnvs.siboon.data.source.remote.NetworkUser;
 import com.lucasnvs.siboon.data.source.remote.RetrofitClient;
 import com.lucasnvs.siboon.data.source.remote.SiboonApi;
 import com.lucasnvs.siboon.model.User;
@@ -23,7 +20,7 @@ public class UserRepository {
     public Single<LoginResponse> login(String email, String password) {
         return api.login(new LoginRequest(email, password))
                 .map(response -> {
-                    if (!response.isError() || response.getData() != null) {
+                    if (response.isError() || response.getData() != null) {
                         return response.getData();
                     } else {
                         throw new Exception("Erro: Resposta inválida da API.");
@@ -34,7 +31,7 @@ public class UserRepository {
     public Single<User> me() {
         return api.me()
                 .map(response -> {
-                    if (!response.isError() || response.getData() != null) {
+                    if (response.isError() || response.getData() != null) {
                         return new User(
                                 response.getData().getName(),
                                 response.getData().getEmail(),

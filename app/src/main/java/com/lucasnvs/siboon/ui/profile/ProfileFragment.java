@@ -1,7 +1,5 @@
 package com.lucasnvs.siboon.ui.profile;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +18,6 @@ import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.UserRepository;
 import com.lucasnvs.siboon.databinding.FragmentProfileBinding;
 import com.lucasnvs.siboon.model.SessionManager;
-import com.lucasnvs.siboon.ui.home.HomeViewModel;
 
 public class ProfileFragment extends Fragment {
 
@@ -43,6 +40,7 @@ public class ProfileFragment extends Fragment {
             @NonNull
             @Override
             public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
+                //noinspection unchecked
                 return (T) new ProfileViewModel(userRepository);
             }
         }).get(ProfileViewModel.class);

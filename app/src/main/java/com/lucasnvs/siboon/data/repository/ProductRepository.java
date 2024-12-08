@@ -1,7 +1,6 @@
 package com.lucasnvs.siboon.data.repository;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.lucasnvs.siboon.data.source.local.LocalProduct;
 import com.lucasnvs.siboon.data.source.local.ProductDAO;
@@ -44,7 +43,7 @@ public class ProductRepository {
     public Single<List<Product>> fetchProducts() {
         return api.getProducts()
                 .map(response -> {
-                    if (!response.isError() || response.getData() != null) {
+                    if (response.isError() || response.getData() != null) {
                         return productMapper.toModel(response.getData());
                     } else {
                         throw new Exception("Erro: Resposta inválida da API.");
@@ -55,7 +54,7 @@ public class ProductRepository {
     public Single<Product> fetchProductById(Long id) {
         return api.getProductById(id)
                 .map(response -> {
-                    if (!response.isError() || response.getData() != null) {
+                    if (response.isError() || response.getData() != null) {
                         return productMapper.toModel(response.getData());
                     } else {
                         throw new Exception("Erro: Resposta inválida da API.");

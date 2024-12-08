@@ -1,4 +1,4 @@
-package com.lucasnvs.siboon.ui.ProductDetail;
+package com.lucasnvs.siboon.ui.productdetail;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,6 +29,7 @@ public class ProductDetailFragment extends Fragment {
             @NonNull
             @Override
             public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
+                //noinspection unchecked
                 return (T) new ProductDetailViewModel(productRepository);
             }
         }).get(ProductDetailViewModel.class);

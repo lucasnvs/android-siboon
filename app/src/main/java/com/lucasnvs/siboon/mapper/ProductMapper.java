@@ -1,6 +1,5 @@
 package com.lucasnvs.siboon.mapper;
 
-import com.lucasnvs.siboon.data.source.local.LocalProduct;
 import com.lucasnvs.siboon.model.Product;
 import com.lucasnvs.siboon.data.source.remote.NetworkProduct;
 

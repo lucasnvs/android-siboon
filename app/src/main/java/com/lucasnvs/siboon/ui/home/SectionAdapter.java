@@ -1,22 +1,17 @@
 package com.lucasnvs.siboon.ui.home;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.model.Section;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

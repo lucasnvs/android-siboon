@@ -1,14 +1,10 @@
 package com.lucasnvs.siboon.ui.profile;
 
-import android.content.Context;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.lucasnvs.siboon.data.repository.ProductRepository;
 import com.lucasnvs.siboon.data.repository.UserRepository;
-import com.lucasnvs.siboon.model.SessionManager;
 import com.lucasnvs.siboon.model.User;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -20,7 +16,7 @@ public class ProfileViewModel extends ViewModel {
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private final UserRepository userRepository;
 
-    private final MutableLiveData<User> user = new MutableLiveData<User>();
+    private final MutableLiveData<User> user = new MutableLiveData<>();
 
     public MutableLiveData<String> errorLiveData = new MutableLiveData<>();
 
@@ -40,7 +36,7 @@ public class ProfileViewModel extends ViewModel {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                user -> this.user.postValue(user),
+                                this.user::postValue,
                                 throwable -> errorLiveData.postValue(throwable.getMessage())
                         )
         );

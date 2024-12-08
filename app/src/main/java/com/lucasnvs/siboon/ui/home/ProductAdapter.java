@@ -1,6 +1,5 @@
 package com.lucasnvs.siboon.ui.home;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.model.Product;
-import com.lucasnvs.siboon.ui.ProductDetail.ProductDetailFragment;
+import com.lucasnvs.siboon.ui.productdetail.ProductDetailFragment;
 import com.lucasnvs.siboon.utils.Constants;
 import com.squareup.picasso.Picasso;
 

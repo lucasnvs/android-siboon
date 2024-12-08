@@ -74,8 +74,6 @@ public class SectionRepository {
                 }
             }
             return products;
-        }).onErrorReturn(throwable -> {
-            return new ArrayList<>();
-        });
+        }).onErrorReturn(throwable -> new ArrayList<>());
     }
 }

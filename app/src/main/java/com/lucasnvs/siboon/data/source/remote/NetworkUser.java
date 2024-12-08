@@ -1,7 +1,5 @@
 package com.lucasnvs.siboon.data.source.remote;
 
-import com.google.gson.annotations.SerializedName;
-
 public class NetworkUser {
     private String name;
     private String email;

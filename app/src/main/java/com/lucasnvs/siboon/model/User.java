@@ -1,7 +1,5 @@
 package com.lucasnvs.siboon.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class User {
     private String name;
     private String email;

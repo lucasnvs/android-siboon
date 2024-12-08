@@ -10,7 +10,7 @@ public class ApiResponse<T> {
     private T data;
 
     public boolean isError() {
-        return Objects.equals(getStatus(), "success");
+        return !Objects.equals(getStatus(), "success");
     }
 
     public String getStatus() {

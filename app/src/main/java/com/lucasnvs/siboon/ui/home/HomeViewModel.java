@@ -1,17 +1,13 @@
 package com.lucasnvs.siboon.ui.home;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.lucasnvs.siboon.data.repository.ProductRepository;
 import com.lucasnvs.siboon.data.repository.SectionRepository;
 import com.lucasnvs.siboon.model.Product;
 import com.lucasnvs.siboon.model.Section;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -53,9 +49,7 @@ public class HomeViewModel extends ViewModel {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                response -> {
-                                    this.sections.postValue(response);
-                                },
+                                response -> this.sections.postValue(response),
                                 throwable -> errorLiveData.postValue(throwable.getMessage())
                         )
         );

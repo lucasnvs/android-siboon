@@ -7,6 +7,7 @@
         android:id="@+id/product_image_view"
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:contentDescription="TODO"
         android:scaleType="centerCrop" />
 
     <LinearLayout
@@ -39,7 +40,7 @@
     <TextView
         android:id="@+id/product_description_text_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:padding="16dp"
         android:layout_weight="1"
         android:textSize="14sp" />

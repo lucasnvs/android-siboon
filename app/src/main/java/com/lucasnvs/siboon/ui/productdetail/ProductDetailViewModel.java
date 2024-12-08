@@ -1,12 +1,10 @@
-package com.lucasnvs.siboon.ui.ProductDetail;
+package com.lucasnvs.siboon.ui.productdetail;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.lucasnvs.siboon.data.repository.ProductRepository;
 import com.lucasnvs.siboon.model.Product;
-
-import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;

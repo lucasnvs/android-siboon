@@ -7,8 +7,8 @@ public class SessionManager {
     private static final String PREF_NAME = "app_session";
     private static final String KEY_TOKEN = "auth_token";
 
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor editor;
 
     public SessionManager(Context context) {
         if (context == null) {
