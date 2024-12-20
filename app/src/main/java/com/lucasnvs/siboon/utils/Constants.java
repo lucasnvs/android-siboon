@@ -2,7 +2,7 @@ package com.lucasnvs.siboon.utils;
 
 public final class Constants {
     private Constants() {
-        throw new UnsupportedOperationException("Cannot instantiate a utility class."); // não pode ser instanciada nem por extensão caso seja abstrata!
+        throw new UnsupportedOperationException("Cannot instantiate a utility class.");
     }
 
     // API
@@ -10,5 +10,5 @@ public final class Constants {
 
     // DB
     public static final String DB_NAME = "siboon_database";
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 4;
 }

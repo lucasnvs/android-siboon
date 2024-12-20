@@ -63,7 +63,7 @@
                 android:layout_marginStart="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/baseline_favorite_24"
-                android:contentDescription="@string/favorite"
+                android:contentDescription="@string/localCart"
                 app:tint="@android:color/holo_red_dark" />
         </LinearLayout>
 

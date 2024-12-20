@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Siboon</string>
     <string name="title_home">Inicio</string>
-    <string name="title_favorites">Favoritos</string>
+    <string name="title_cart">Carrinho</string>
     <string name="title_profile">Perfil</string>
     <string name="title_login">Login</string>
     <string name="title_signup">Registro</string>
@@ -16,5 +16,5 @@
     <string name="login_btn">ENTRAR</string>
     <string name="user_picture">Foto do usuário</string>
     <string name="buy">Comprar</string>
-    <string name="favorite">Favoritar</string>
+    <string name="localCart">Favoritar</string>
 </resources>

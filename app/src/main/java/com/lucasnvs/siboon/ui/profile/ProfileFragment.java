@@ -50,10 +50,6 @@ public class ProfileFragment extends Fragment {
             binding.tvProfileEmail.setText(user.getEmail());
         });
 
-        if (!sessionManager.isLoggedIn()) {
-            redirectToLogin(view);
-        }
-
         setupListeners(profileViewModel);
     }
 

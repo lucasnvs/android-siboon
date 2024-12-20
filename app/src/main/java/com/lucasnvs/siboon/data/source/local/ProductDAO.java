@@ -10,11 +10,15 @@ import java.util.List;
 
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Single;
 
 @Dao
 public interface ProductDAO {
     @Query("SELECT * FROM products")
     Flowable<List<LocalProduct>> getAllProducts();
+
+    @Query("SELECT * FROM products WHERE id = :productId LIMIT 1")
+    Single<LocalProduct> getProductById(Long productId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insert(LocalProduct product);
@@ -24,13 +28,4 @@ public interface ProductDAO {
 
     @Query("DELETE FROM products")
     Completable deleteAll();
-
-//    @Query("SELECT * FROM products WHERE id IN (SELECT productId FROM favorites)")
-//    List<LocalProduct> getFavoriteProducts();
-//
-    @Upsert
-    void upsertFavorite(LocalProduct product);
-
-    @Query("DELETE FROM products WHERE id = :favoriteId")
-    Integer deleteFavoriteById(Integer favoriteId);
 }

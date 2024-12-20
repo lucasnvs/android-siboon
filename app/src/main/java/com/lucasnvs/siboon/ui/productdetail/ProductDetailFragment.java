@@ -1,6 +1,7 @@
 package com.lucasnvs.siboon.ui.productdetail;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.lucasnvs.siboon.databinding.FragmentProductDetailBinding;
 import com.lucasnvs.siboon.model.Product;
 import com.lucasnvs.siboon.utils.Constants;
 import com.squareup.picasso.Picasso;
+
 
 public class ProductDetailFragment extends Fragment {
     private FragmentProductDetailBinding binding;
@@ -51,6 +53,15 @@ public class ProductDetailFragment extends Fragment {
                 updateUI(product);
             }
         });
+
+        binding.buyButton.setOnClickListener(v -> productDetailViewModel.addToCart());
+
+        productDetailViewModel.productAddedToCart.observe(getViewLifecycleOwner(), added -> {
+            if (added != null && added) {
+                Toast.makeText(getContext(), "Produto adicionado ao carrinho com sucesso!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         Bundle args = getArguments();
         if (args != null) {
@@ -84,7 +95,6 @@ public class ProductDetailFragment extends Fragment {
         );
         binding.productDescriptionTextView.setText(product.getDescription());
     }
-
 
     private void insertImageView(String resource) {
         if(resource == null) return;

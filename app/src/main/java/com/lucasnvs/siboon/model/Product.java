@@ -5,9 +5,8 @@ import java.util.List;
 public class Product {
     private Long id;
     private String title;
-    private double price;
+    private Double price;
     private String imageSrc;
-
     private List<String> additionalImagesSrc;
     private String description;
     private Integer installments;
@@ -38,11 +37,11 @@ public class Product {
         this.title = title;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
