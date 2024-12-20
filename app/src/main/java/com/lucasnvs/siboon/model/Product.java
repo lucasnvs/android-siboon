@@ -1,18 +1,23 @@
 package com.lucasnvs.siboon.model;
 
+import java.util.List;
+
 public class Product {
     private Long id;
     private String title;
     private double price;
-    private String imageUrl;
+    private String imageSrc;
+
+    private List<String> additionalImagesSrc;
     private String description;
     private Integer installments;
 
-    public Product(Long id, String title, double price, String imageUrl, String description, Integer installments) {
+    public Product(Long id, String title, double price, String imageSrc, List<String> additionalImagesSrc, String description, Integer installments) {
         this.id = id;
         this.title = title;
         this.price = price;
-        this.imageUrl = imageUrl;
+        this.imageSrc = imageSrc;
+        this.additionalImagesSrc = additionalImagesSrc;
         this.description = description;
         this.installments = installments;
     }
@@ -41,12 +46,20 @@ public class Product {
         this.price = price;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImageSrc() {
+        return imageSrc;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageSrc(String imageSrc) {
+        this.imageSrc = imageSrc;
+    }
+
+    public List<String> getAdditionalImagesSrc() {
+        return additionalImagesSrc;
+    }
+
+    public void setAdditionalImagesSrc(List<String> additionalImagesSrc) {
+        this.additionalImagesSrc = additionalImagesSrc;
     }
 
     public String getDescription() {

@@ -2,6 +2,8 @@ package com.lucasnvs.siboon.data.source.remote;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class NetworkProduct {
 
     @SerializedName("id")
@@ -35,11 +37,12 @@ public class NetworkProduct {
     private int sizeTypeId;
 
     @SerializedName("principal_img")
-    private String principalImg;
+    private String principalImage;
 
-    public NetworkProduct(Long id, String name, String description, String color, Double priceBrl,
-                          String formattedPriceBrl, int discountBrlPercentage, String formattedPriceBrlWithDiscount,
-                          int maxInstallments, int sizeTypeId, String principalImg) {
+    @SerializedName("additional_imgs")
+    private List<String> additionalImages;
+
+    public NetworkProduct(Long id, String name, String description, String color, Double priceBrl, String formattedPriceBrl, int discountBrlPercentage, String formattedPriceBrlWithDiscount, int maxInstallments, int sizeTypeId, String principalImage, List<String> additionalImages) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -50,7 +53,8 @@ public class NetworkProduct {
         this.formattedPriceBrlWithDiscount = formattedPriceBrlWithDiscount;
         this.maxInstallments = maxInstallments;
         this.sizeTypeId = sizeTypeId;
-        this.principalImg = principalImg;
+        this.principalImage = principalImage;
+        this.additionalImages = additionalImages;
     }
 
     public Long getId() {
@@ -133,11 +137,19 @@ public class NetworkProduct {
         this.sizeTypeId = sizeTypeId;
     }
 
-    public String getPrincipalImg() {
-        return principalImg;
+    public String getPrincipalImage() {
+        return principalImage;
     }
 
-    public void setPrincipalImg(String principalImg) {
-        this.principalImg = principalImg;
+    public void setPrincipalImage(String principalImage) {
+        this.principalImage = principalImage;
+    }
+
+    public List<String> getAdditionalImages() {
+        return additionalImages;
+    }
+
+    public void setAdditionalImages(List<String> additionalImages) {
+        this.additionalImages = additionalImages;
     }
 }

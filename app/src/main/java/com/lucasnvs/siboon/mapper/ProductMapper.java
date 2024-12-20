@@ -19,7 +19,8 @@ public class ProductMapper implements IMapper<Product, NetworkProduct>{
                 networkProduct.getId(),
                 networkProduct.getName(),
                 networkProduct.getPriceBrl() != null ? networkProduct.getPriceBrl() : 0.0,
-                networkProduct.getPrincipalImg(),
+                networkProduct.getPrincipalImage(),
+                networkProduct.getAdditionalImages(),
                 networkProduct.getDescription(),
                 networkProduct.getMaxInstallments()
         );

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,8 +14,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.ProductRepository;
 import com.lucasnvs.siboon.databinding.FragmentProductDetailBinding;
+import com.lucasnvs.siboon.model.Product;
 import com.lucasnvs.siboon.utils.Constants;
 import com.squareup.picasso.Picasso;
 
@@ -64,17 +68,51 @@ public class ProductDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    private void updateUI(@NonNull com.lucasnvs.siboon.model.Product product) {
-        Picasso.get().load(Constants.BASE_URL + product.getImageUrl()).into(binding.productImageView);
+    private void updateUI(@NonNull Product product) {
+
+        insertImageView(product.getImageSrc());
+        if(product.getAdditionalImagesSrc() != null) {
+            for (String imageUrl : product.getAdditionalImagesSrc()) {
+                insertImageView(imageUrl);
+            }
+        }
 
         binding.productNameTextView.setText(product.getTitle());
-
         binding.productPriceTextView.setText(String.format("R$ %.2f", product.getPrice()));
-
         binding.productInstallmentTextView.setText(
                 String.format("ou até %dx de R$ %.2f", product.getInstallments(), product.getPrice() / product.getInstallments())
         );
-
         binding.productDescriptionTextView.setText(product.getDescription());
+    }
+
+
+    private void insertImageView(String resource) {
+        if(resource == null) return;
+
+        ImageView imageView = new ImageView(this.getContext());
+
+        int sizeDpWidth = 410;
+        int sizeDpHeight = 300;
+
+        imageView.setLayoutParams(
+                new LinearLayout.LayoutParams(
+                        dpToPixel(sizeDpWidth),
+                        dpToPixel(sizeDpHeight)
+                )
+        );
+
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setPadding(8, 8, 8, 8);
+
+        Picasso.get()
+                .load(Constants.BASE_URL + resource)
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(imageView);
+
+        binding.imagesContainer.addView(imageView);
+    }
+
+    public int dpToPixel(int dp) {
+        return (int) (dp * getResources().getDisplayMetrics().density);
     }
 }
