@@ -81,6 +81,17 @@ public class ProductRepository {
                 });
     }
 
+    public Completable deleteById(Long id) {
+        return Completable.fromAction(() -> {
+            cartDAO.deleteCartByProductId(id);
+        }).doOnComplete(() -> {
+            Log.d("ProductRepository", "Produto deletado com sucesso: ID = " + id);
+        }).doOnError(throwable -> {
+            Log.e("ProductRepository", "Erro ao deletar produto: ID = " + id, throwable);
+        });
+    }
+
+
     public Completable upsertCartProduct(Product product, int newQuantity) {
         return refresh()
                 .andThen(Completable.fromCallable(() -> {
@@ -89,6 +100,7 @@ public class ProductRepository {
                         existingLocalCart.setQuantity(existingLocalCart.getQuantity() + newQuantity);
                         cartDAO.updateCart(existingLocalCart);
                     } else {
+                        refresh();
                         LocalCart newLocalCart = new LocalCart(product.getId(), newQuantity);
                         cartDAO.insertCart(newLocalCart);
                     }

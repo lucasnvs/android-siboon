@@ -27,4 +27,7 @@ public interface CartDAO {
 
     @Delete
     void deleteCart(LocalCart localCart);
+
+    @Query("DELETE FROM cart WHERE productId = :productId")
+    void deleteCartByProductId(Long productId);
 }

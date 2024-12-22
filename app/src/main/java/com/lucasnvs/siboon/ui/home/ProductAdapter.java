@@ -54,7 +54,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
         holder.title.setText(product.getTitle());
-        holder.price.setText(String.format("R$ %s", product.getPrice()));
+        holder.price.setText(String.format("R$ %.2f", product.getPrice()));
 
         Picasso.get().load(Constants.BASE_URL + product.getImageSrc())
                 .placeholder(R.drawable.ic_launcher_background)

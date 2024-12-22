@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.lucasnvs.siboon.data.repository.ProductRepository;
@@ -19,6 +20,7 @@ import com.lucasnvs.siboon.databinding.FragmentCartBinding;
 import com.lucasnvs.siboon.ui.home.HomeViewModel;
 import com.lucasnvs.siboon.ui.home.ProductAdapter;
 import com.lucasnvs.siboon.ui.home.SectionAdapter;
+import com.lucasnvs.siboon.utils.SpacesItemDecoration;
 
 import java.util.ArrayList;
 
@@ -43,13 +45,16 @@ public class CartFragment extends Fragment {
         binding = FragmentCartBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        binding.recyclerViewCart.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        ProductAdapter productAdapter = new ProductAdapter(getContext(), new ArrayList<>());
-        binding.recyclerViewCart.setAdapter(productAdapter);
+        binding.rvCart.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        SpacesItemDecoration itemDecoration = new SpacesItemDecoration(20);
+        binding.rvCart.addItemDecoration(itemDecoration);
+
+        CartAdapter cartAdapter = new CartAdapter(getContext(), new ArrayList<>());
+        binding.rvCart.setAdapter(cartAdapter);
 
         cartViewModel.cart.observe(getViewLifecycleOwner(), products -> {
-            productAdapter.setProducts(products);
-            binding.recyclerViewCart.setAdapter(productAdapter);
+            cartAdapter.setProducts(products);
+            binding.rvCart.setAdapter(cartAdapter);
         });
 
         cartViewModel.errorLiveData.observe(getViewLifecycleOwner(), error -> {
