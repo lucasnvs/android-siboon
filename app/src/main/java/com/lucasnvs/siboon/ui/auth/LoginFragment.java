@@ -1,9 +1,7 @@
 package com.lucasnvs.siboon.ui.auth;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +16,6 @@ import androidx.navigation.Navigation;
 
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.databinding.FragmentLoginBinding;
-
-import java.util.Objects;
 
 public class LoginFragment extends Fragment {
 

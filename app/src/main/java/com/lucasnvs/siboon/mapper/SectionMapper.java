@@ -1,8 +1,8 @@
 package com.lucasnvs.siboon.mapper;
 
-import com.lucasnvs.siboon.model.Section;
-import com.lucasnvs.siboon.model.Product;
 import com.lucasnvs.siboon.data.source.remote.NetworkSection;
+import com.lucasnvs.siboon.model.Product;
+import com.lucasnvs.siboon.model.Section;
 
 import java.util.ArrayList;
 import java.util.List;

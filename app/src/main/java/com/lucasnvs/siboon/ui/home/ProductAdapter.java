@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.ProductRepository;
 import com.lucasnvs.siboon.model.Product;
-import com.lucasnvs.siboon.model.Section;
 import com.lucasnvs.siboon.ui.productdetail.ProductDetailFragment;
 import com.lucasnvs.siboon.utils.Constants;
 import com.squareup.picasso.Picasso;
@@ -84,11 +83,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView title;
-        TextView price;
-        Button buyButton;
-        ImageButton favoriteButton;
+        final ImageView image;
+        final TextView title;
+        final TextView price;
+        final Button buyButton;
+        final ImageButton favoriteButton;
 
         ProductViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -50,8 +50,8 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionV
 
     static class SectionViewHolder extends RecyclerView.ViewHolder {
 
-        TextView sectionTitle;
-        RecyclerView recyclerView;
+        final TextView sectionTitle;
+        final RecyclerView recyclerView;
 
         SectionViewHolder(@NonNull View itemView) {
             super(itemView);

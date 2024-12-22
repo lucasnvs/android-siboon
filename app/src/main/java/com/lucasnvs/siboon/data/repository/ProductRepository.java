@@ -3,15 +3,14 @@ package com.lucasnvs.siboon.data.repository;
 import android.content.Context;
 import android.util.Log;
 
-import com.lucasnvs.siboon.data.source.local.LocalCart;
 import com.lucasnvs.siboon.data.source.local.CartDAO;
+import com.lucasnvs.siboon.data.source.local.LocalCart;
 import com.lucasnvs.siboon.data.source.local.LocalProduct;
 import com.lucasnvs.siboon.data.source.local.ProductDAO;
 import com.lucasnvs.siboon.data.source.local.SiboonDatabase;
 import com.lucasnvs.siboon.data.source.remote.RetrofitClient;
 import com.lucasnvs.siboon.data.source.remote.SiboonApi;
 import com.lucasnvs.siboon.mapper.ProductMapper;
-import com.lucasnvs.siboon.model.Cart;
 import com.lucasnvs.siboon.model.Product;
 
 import java.util.List;
@@ -51,12 +50,8 @@ public class ProductRepository {
         return fetchProducts()
                 .map(productMapper::toLocal)
                 .flatMapCompletable(this::updateLocalProducts)
-                .doOnComplete(() -> {
-                    Log.e("ProductRepository", "Produtos recarregados com sucesso!");
-                })
-                .doOnError(throwable -> {
-                    Log.e("ProductRepository", "Erro: Ao recarregar produtos.", throwable);
-                });
+                .doOnComplete(() -> Log.e("ProductRepository", "Produtos recarregados com sucesso!"))
+                .doOnError(throwable -> Log.e("ProductRepository", "Erro: Ao recarregar produtos.", throwable));
     }
 
     public Single<List<Product>> fetchProducts() {
@@ -82,13 +77,7 @@ public class ProductRepository {
     }
 
     public Completable deleteById(Long id) {
-        return Completable.fromAction(() -> {
-            cartDAO.deleteCartByProductId(id);
-        }).doOnComplete(() -> {
-            Log.d("ProductRepository", "Produto deletado com sucesso: ID = " + id);
-        }).doOnError(throwable -> {
-            Log.e("ProductRepository", "Erro ao deletar produto: ID = " + id, throwable);
-        });
+        return Completable.fromAction(() -> cartDAO.deleteCartByProductId(id)).doOnComplete(() -> Log.d("ProductRepository", "Produto deletado com sucesso: ID = " + id)).doOnError(throwable -> Log.e("ProductRepository", "Erro ao deletar produto: ID = " + id, throwable));
     }
 
 
@@ -106,9 +95,7 @@ public class ProductRepository {
                     }
                     return Completable.complete();
                 }))
-                .doOnError(throwable -> {
-                    Log.e("ProductRepository", "Erro: Ao atualizar carrinho", throwable);
-                });
+                .doOnError(throwable -> Log.e("ProductRepository", "Erro: Ao atualizar carrinho", throwable));
     }
 
     public Flowable<List<Product>> getCartProducts() {
@@ -118,9 +105,7 @@ public class ProductRepository {
                         .toList()
                         .toFlowable()
                 )
-                .doOnComplete( () -> {
-                    Log.d("ProductRepository", "Retorno com sucesso!");
-                })
+                .doOnComplete( () -> Log.d("ProductRepository", "Retorno com sucesso!"))
                 .onErrorResumeNext(throwable -> {
                     Log.d("ProductRepository", "Erro ao pegar items do carrinho!", throwable);
                     return Flowable.error(throwable);

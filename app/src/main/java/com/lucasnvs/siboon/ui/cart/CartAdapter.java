@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Index;
 
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.ProductRepository;
@@ -57,9 +56,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 .error(R.drawable.ic_launcher_background)
                 .into(holder.image);
 
-        holder.btnRemove.setOnClickListener(v -> {
-            removeOnCart(product);
-        });
+        holder.btnRemove.setOnClickListener(v -> removeOnCart(product));
 
 //        holder.btnDecrease.setOnClickListener(v -> {
 //            holder.quantity.setText(
@@ -80,14 +77,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     static class CartViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView title;
-        TextView price;
-        TextView installment;
-        TextView quantity;
-        ImageView btnDecrease;
-        ImageView btnIncrease;
-        ImageView btnRemove;
+        final ImageView image;
+        final TextView title;
+        final TextView price;
+        final TextView installment;
+        final TextView quantity;
+        final ImageView btnDecrease;
+        final ImageView btnIncrease;
+        final ImageView btnRemove;
 
         CartViewHolder(@NonNull View itemView) {
             super(itemView);

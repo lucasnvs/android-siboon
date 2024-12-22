@@ -1,8 +1,5 @@
 package com.lucasnvs.siboon.model;
 
-import androidx.room.ColumnInfo;
-import androidx.room.PrimaryKey;
-
 public class Cart {
 
     private Long productId;

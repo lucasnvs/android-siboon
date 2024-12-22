@@ -2,20 +2,13 @@ package com.lucasnvs.siboon.ui.cart;
 
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.lucasnvs.siboon.data.repository.ProductRepository;
-import com.lucasnvs.siboon.data.source.local.LocalCart;
-import com.lucasnvs.siboon.mapper.ProductMapper;
-import com.lucasnvs.siboon.model.Cart;
 import com.lucasnvs.siboon.model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -27,7 +20,7 @@ public class CartViewModel extends ViewModel {
     private final ProductRepository productRepository;
     public final MutableLiveData<List<Product>> cart = new MutableLiveData<>();
 
-    public MutableLiveData<String> errorLiveData = new MutableLiveData<>();
+    public final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
 
     public CartViewModel(ProductRepository productRepository) {
         this.productRepository = productRepository;

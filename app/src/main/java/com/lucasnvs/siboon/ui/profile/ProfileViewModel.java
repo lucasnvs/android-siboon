@@ -18,7 +18,7 @@ public class ProfileViewModel extends ViewModel {
 
     private final MutableLiveData<User> user = new MutableLiveData<>();
 
-    public MutableLiveData<String> errorLiveData = new MutableLiveData<>();
+    public final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
 
     public ProfileViewModel(UserRepository userRepository) {
         this.userRepository = userRepository;

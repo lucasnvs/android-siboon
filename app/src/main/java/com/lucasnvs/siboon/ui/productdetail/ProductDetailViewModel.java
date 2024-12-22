@@ -1,6 +1,7 @@
 package com.lucasnvs.siboon.ui.productdetail;
 
 import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -17,9 +18,9 @@ public class ProductDetailViewModel extends ViewModel {
 
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private final ProductRepository productRepository;
-    public MutableLiveData<String> errorLiveData = new MutableLiveData<>();
-    public MutableLiveData<Product> product = new MutableLiveData<>();
-    public MutableLiveData<Boolean> productAddedToCart = new MutableLiveData<>();
+    public final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
+    public final MutableLiveData<Product> product = new MutableLiveData<>();
+    public final MutableLiveData<Boolean> productAddedToCart = new MutableLiveData<>();
 
     public ProductDetailViewModel(ProductRepository productRepository) {
         this.productRepository = productRepository;

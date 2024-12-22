@@ -1,6 +1,7 @@
 package com.lucasnvs.siboon.data.source.remote;
 
 import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class NetworkSection {

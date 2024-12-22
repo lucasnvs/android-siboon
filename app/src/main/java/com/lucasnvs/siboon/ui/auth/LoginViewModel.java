@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.lucasnvs.siboon.data.repository.UserRepository;
-import com.lucasnvs.siboon.model.SessionManager;
 import com.lucasnvs.siboon.data.source.remote.LoginResponse;
+import com.lucasnvs.siboon.model.SessionManager;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -19,8 +19,8 @@ public class LoginViewModel extends ViewModel {
     private UserRepository userRepository;
     private SessionManager sessionManager;
 
-    public MutableLiveData<LoginResponse> loginResponse = new MutableLiveData<>();
-    public MutableLiveData<String> errorLiveData = new MutableLiveData<>();
+    public final MutableLiveData<LoginResponse> loginResponse = new MutableLiveData<>();
+    public final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
 
     public void setContext(Context context) {
         this.userRepository = new UserRepository(context);

@@ -20,11 +20,11 @@ public class HomeViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public MutableLiveData<String> errorLiveData = new MutableLiveData<>();
+    public final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
 
-    public MutableLiveData<List<Section>> sections = new MutableLiveData<>();
+    public final MutableLiveData<List<Section>> sections = new MutableLiveData<>();
 
-    public MutableLiveData<List<Product>> products = new MutableLiveData<>();
+    public final MutableLiveData<List<Product>> products = new MutableLiveData<>();
 
     private final SectionRepository sectionRepository;
 

@@ -23,12 +23,12 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private SectionAdapter sectionAdapter;
-    private HomeViewModel homeViewModel;
 
     @SuppressLint("NotifyDataSetChanged")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         SectionRepository sectionRepository = new SectionRepository(requireContext());
-        homeViewModel = new ViewModelProvider(this, new ViewModelProvider.Factory() {
+        //noinspection unchecked
+        HomeViewModel homeViewModel = new ViewModelProvider(this, new ViewModelProvider.Factory() {
             @NonNull
             @Override
             public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {

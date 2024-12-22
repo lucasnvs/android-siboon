@@ -2,10 +2,10 @@ package com.lucasnvs.siboon.data.source.remote;
 
 import androidx.annotation.NonNull;
 
+import java.io.IOException;
+
 import okhttp3.Interceptor;
 import okhttp3.Response;
-
-import java.io.IOException;
 
 public class AuthInterceptor implements Interceptor {
 

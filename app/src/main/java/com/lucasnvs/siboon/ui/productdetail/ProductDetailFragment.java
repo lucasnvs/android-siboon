@@ -1,7 +1,6 @@
 package com.lucasnvs.siboon.ui.productdetail;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,7 @@ import com.squareup.picasso.Picasso;
 public class ProductDetailFragment extends Fragment {
     private FragmentProductDetailBinding binding;
     private ProductDetailViewModel productDetailViewModel;
-    public static String ARG_PRODUCT_ID = "PRODUCT_ID_ARG";
+    public static final String ARG_PRODUCT_ID = "PRODUCT_ID_ARG";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
