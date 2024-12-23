@@ -7,6 +7,7 @@ import java.util.Objects;
 public class ApiResponse<T> {
     @SerializedName("type")
     private String status;
+    private String message;
     private T data;
 
     public boolean isError() {
@@ -19,6 +20,14 @@ public class ApiResponse<T> {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public T getData() {

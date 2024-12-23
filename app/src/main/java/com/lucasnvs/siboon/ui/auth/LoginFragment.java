@@ -42,7 +42,7 @@ public class LoginFragment extends Fragment {
 
         loginViewModel.errorLiveData.observe(getViewLifecycleOwner(), error -> {
             if (error != null) {
-                Toast.makeText(context, "Erro: "+error, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, error, Toast.LENGTH_LONG).show();
             }
         });
 

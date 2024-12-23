@@ -14,16 +14,10 @@ public class RetrofitClient {
 
     private RetrofitClient(Context context) {
         SessionManager sessionManager = new SessionManager(context);
-        String token = sessionManager.getToken();
 
-        OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
-
-        if (token != null) {
-            AuthInterceptor authInterceptor = new AuthInterceptor(token);
-            httpClientBuilder.addInterceptor(authInterceptor);
-        }
-
-        OkHttpClient okHttpClient = httpClientBuilder.build();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(new AuthInterceptor(sessionManager))
+                .build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(SiboonApi.BASE_URL)

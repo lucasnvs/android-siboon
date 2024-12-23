@@ -1,6 +1,7 @@
 package com.lucasnvs.siboon.ui.auth;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -37,7 +38,10 @@ public class LoginViewModel extends ViewModel {
                                     sessionManager.saveToken(response.getToken());
                                     loginResponse.postValue(response);
                                 },
-                                throwable -> errorLiveData.postValue(throwable.getMessage())
+                                throwable -> {
+                                    Log.e("LoginError", "Erro ao realizar login", throwable);
+                                    errorLiveData.postValue(throwable.getMessage());
+                                }
                         )
         );
     }
