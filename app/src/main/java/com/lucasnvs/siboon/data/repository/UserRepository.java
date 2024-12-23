@@ -12,6 +12,8 @@ import com.lucasnvs.siboon.model.User;
 
 import org.json.JSONObject;
 
+import java.net.ProtocolException;
+
 import io.reactivex.rxjava3.core.Single;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -27,7 +29,7 @@ public class UserRepository {
     private String extractHttpErrorResponseMessage(Throwable throwable) {
         String errorMessage = "Erro";
 
-        if (throwable instanceof HttpException) {
+        if (throwable instanceof HttpException | throwable instanceof ProtocolException) {
             HttpException httpException = (HttpException) throwable;
             ResponseBody errorBody = httpException.response().errorBody();
 
