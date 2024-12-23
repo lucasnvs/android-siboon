@@ -18,6 +18,8 @@ import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.UserRepository;
 import com.lucasnvs.siboon.databinding.FragmentProfileBinding;
 import com.lucasnvs.siboon.model.SessionManager;
+import com.lucasnvs.siboon.utils.Constants;
+import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
 
@@ -48,7 +50,14 @@ public class ProfileFragment extends Fragment {
         profileViewModel.getUser().observe(getViewLifecycleOwner(), user -> {
             binding.tvProfileName.setText(user.getName());
             binding.tvProfileEmail.setText(user.getEmail());
+
+            Picasso.get().load(Constants.BASE_URL + user.getImg())
+                    .placeholder(R.drawable.placeholder_image)
+                    .error(R.drawable.placeholder_image)
+                    .into(binding.imgProfileAvatar);
         });
+
+
 
         setupListeners(profileViewModel);
     }

@@ -115,7 +115,7 @@ public class ProductDetailFragment extends Fragment {
 
         Picasso.get()
                 .load(Constants.BASE_URL + resource)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.placeholder_image)
                 .into(imageView);
 
         binding.imagesContainer.addView(imageView);

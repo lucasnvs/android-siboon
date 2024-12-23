@@ -13,15 +13,39 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-        <ImageButton
-            android:id="@+id/favorite_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="end"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/baseline_shopping_cart_24"
-            android:contentDescription="@string/localCart"
-            app:tint="@color/light_gray" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:progressTint="#FFCC01"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                android:rating="3.5"
+                android:stepSize="0.5" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/favorite_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/baseline_shopping_cart_24"
+                android:contentDescription="@string/localCart"
+                app:tint="@color/light_gray" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/product_image"
@@ -29,7 +53,7 @@
             android:layout_height="150dp"
             android:contentDescription="Imagem do Produto"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/placeholder_image" />
 
         <TextView
             android:id="@+id/product_title"
@@ -48,8 +72,8 @@
             android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:text="@string/loading"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textColor="@color/app_principal_color"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,7 +91,6 @@
                 android:text="@string/buy"
                 android:textColor="@android:color/white" />
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

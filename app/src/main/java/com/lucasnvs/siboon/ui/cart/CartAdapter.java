@@ -52,8 +52,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.installment.setText(String.format("Parcelado no cartão em até %dx", product.getInstallments()));
 
         Picasso.get().load(Constants.BASE_URL + product.getImageSrc())
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.placeholder_image)
+                .error(R.drawable.placeholder_image)
                 .into(holder.image);
 
         holder.btnRemove.setOnClickListener(v -> removeOnCart(product));

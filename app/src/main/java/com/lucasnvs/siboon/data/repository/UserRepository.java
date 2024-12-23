@@ -29,7 +29,7 @@ public class UserRepository {
     private String extractHttpErrorResponseMessage(Throwable throwable) {
         String errorMessage = "Erro";
 
-        if (throwable instanceof HttpException | throwable instanceof ProtocolException) {
+        if (throwable instanceof HttpException) {
             HttpException httpException = (HttpException) throwable;
             ResponseBody errorBody = httpException.response().errorBody();
 
@@ -41,6 +41,11 @@ public class UserRepository {
                     e.printStackTrace();
                 }
             }
+        }
+
+        if (throwable instanceof ProtocolException) {
+            ProtocolException protocolException = (ProtocolException) throwable;
+            protocolException.getCause().printStackTrace();
         }
 
         return errorMessage;

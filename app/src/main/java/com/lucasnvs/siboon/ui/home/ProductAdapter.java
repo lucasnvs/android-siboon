@@ -56,8 +56,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.price.setText(String.format("R$ %.2f", product.getPrice()));
 
         Picasso.get().load(Constants.BASE_URL + product.getImageSrc())
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.placeholder_image)
+                .error(R.drawable.placeholder_image)
                 .into(holder.image);
 
         holder.itemView.setOnClickListener(v -> {
