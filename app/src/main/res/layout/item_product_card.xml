@@ -1,22 +1,32 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="270dp"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="4dp"
     app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/favorite_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_shopping_cart_24"
+            android:contentDescription="@string/localCart"
+            app:tint="@color/light_gray" />
 
         <ImageView
             android:id="@+id/product_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:contentDescription="Imagem do Produto"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_launcher_background" />
@@ -26,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Nome do Produto"
+            android:text="@string/loading"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -37,7 +47,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="4dp"
             android:layout_weight="1"
-            android:text="R$ 99,99"
+            android:text="@string/loading"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
@@ -56,16 +66,6 @@
                 android:backgroundTint="@color/app_principal_color"
                 android:text="@string/buy"
                 android:textColor="@android:color/white" />
-
-            <ImageButton
-                android:id="@+id/favorite_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/baseline_favorite_24"
-                android:contentDescription="@string/localCart"
-                app:tint="@android:color/holo_red_dark" />
         </LinearLayout>
 
     </LinearLayout>

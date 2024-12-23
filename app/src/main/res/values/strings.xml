@@ -17,6 +17,6 @@
     <string name="login_btn">ENTRAR</string>
     <string name="user_picture">Foto do usuário</string>
     <string name="buy">Comprar</string>
-    <string name="localCart">Favoritar</string>
+    <string name="localCart">Carrinho</string>
     <string name="loading">Carregando...</string>
 </resources>
