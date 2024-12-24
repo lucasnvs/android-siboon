@@ -43,17 +43,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    private void setToolbarVisibility(int navigationId) {
-//        Map<Integer, Boolean> mapToolbarVisibility = new HashMap<>();
-//        mapToolbarVisibility.put(R.id.navigation_home, true);
-//        mapToolbarVisibility.put(R.id.navigation_login, false);
-//        mapToolbarVisibility.put(R.id.navigation_signup, false);
-//        mapToolbarVisibility.put(R.id.navigation_cart, true);
-//        Boolean isToolbarVisible = mapToolbarVisibility.getOrDefault((Integer) navigationId, true);
-//
-//        toolbar.setVisibility(Boolean.TRUE.equals(isToolbarVisible) ? View.VISIBLE : View.GONE);
-//    }
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);

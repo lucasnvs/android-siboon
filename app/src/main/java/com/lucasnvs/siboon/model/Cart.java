@@ -1,11 +1,8 @@
 package com.lucasnvs.siboon.model;
 
-import androidx.room.ColumnInfo;
-import androidx.room.PrimaryKey;
-
 public class Cart {
     private Product product;
-    private int quantity = 0;
+    private int quantity;
     private String createdAt;
 
     public Cart(Product product, int quantity, String createdAt) {

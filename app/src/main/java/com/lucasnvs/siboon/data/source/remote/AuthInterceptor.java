@@ -19,7 +19,7 @@ public class AuthInterceptor implements Interceptor {
 
     @NonNull
     @Override
-    public Response intercept(Chain chain) throws IOException {
+    public Response intercept(@NonNull Chain chain) throws IOException {
         String token = sessionManager.getToken();
         if (token != null) {
             return chain.proceed(chain.request().newBuilder()

@@ -1,12 +1,10 @@
 package com.lucasnvs.siboon.data.source.remote;
 
-import com.google.gson.annotations.SerializedName;
-
 public class LoginRequest {
 
-    String email;
+    final String email;
 
-    String password;
+    final String password;
 
     public LoginRequest(String email, String password) {
         this.email = email;

@@ -23,6 +23,17 @@
     <string name="user_picture">Foto do usuário</string>
     <string name="buy">Comprar</string>
     <string name="localCart">Carrinho</string>
-    <string name="loading">Carregando...</string>
+    <string name="loading">Carregando…</string>
     <string name="e_mail">E-mail</string>
+    <string name="empty_cart">O seu carrinho está vazio.</string>
+    <string name="configs">Configurações</string>
+    <string name="personal_data">Dados Pessoais</string>
+    <string name="address">Endereço</string>
+    <string name="my_orders">Meus Pedidos</string>
+    <string name="self_service">Autoatendimento</string>
+    <string name="logout">Sair da sessão</string>
+    <string name="delete_product">Remover produto</string>
+    <string name="price_pix">Preço à vista no PIX:</string>
+    <string name="decrease_quantity">Diminuir quantidade</string>
+    <string name="increase_quantity">Aumentar quantidade</string>
 </resources>

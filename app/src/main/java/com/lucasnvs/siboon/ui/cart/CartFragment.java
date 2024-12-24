@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.ProductRepository;
 import com.lucasnvs.siboon.databinding.FragmentCartBinding;
 import com.lucasnvs.siboon.utils.SpacesItemDecoration;

@@ -24,7 +24,7 @@
         android:id="@+id/tvEmptyCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="O seu carrinho está vazio."
+        android:text="@string/empty_cart"
         android:visibility="gone"
         android:layout_centerInParent="true"
         android:textSize="18sp"

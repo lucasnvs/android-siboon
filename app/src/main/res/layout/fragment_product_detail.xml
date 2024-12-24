@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/app_principal_color"
                 android:padding="16dp"
-                android:text="Comprar"
+                android:text="@string/buy"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
         </LinearLayout>

@@ -3,7 +3,6 @@ package com.lucasnvs.siboon.ui.auth;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -11,13 +10,9 @@ import com.lucasnvs.siboon.data.repository.UserRepository;
 import com.lucasnvs.siboon.data.source.remote.LoginResponse;
 import com.lucasnvs.siboon.model.SessionManager;
 
-import org.json.JSONObject;
-
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import okhttp3.ResponseBody;
-import retrofit2.HttpException;
 
 public class SignupViewModel extends ViewModel {
 

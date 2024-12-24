@@ -3,8 +3,6 @@ package com.lucasnvs.siboon.data.repository;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.room.rxjava3.EmptyResultSetException;
-
 import com.lucasnvs.siboon.data.source.local.LocalCart;
 import com.lucasnvs.siboon.data.source.local.CartDAO;
 import com.lucasnvs.siboon.data.source.local.LocalProduct;
@@ -16,7 +14,6 @@ import com.lucasnvs.siboon.mapper.ProductMapper;
 import com.lucasnvs.siboon.model.Cart;
 import com.lucasnvs.siboon.model.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Completable;

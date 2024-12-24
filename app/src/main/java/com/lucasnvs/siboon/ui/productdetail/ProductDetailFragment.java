@@ -24,8 +24,6 @@ import com.lucasnvs.siboon.model.Product;
 import com.lucasnvs.siboon.utils.Constants;
 import com.squareup.picasso.Picasso;
 
-import java.util.Objects;
-
 
 public class ProductDetailFragment extends Fragment {
     private FragmentProductDetailBinding binding;

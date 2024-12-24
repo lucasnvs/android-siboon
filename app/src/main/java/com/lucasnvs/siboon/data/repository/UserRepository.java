@@ -1,6 +1,7 @@
 package com.lucasnvs.siboon.data.repository;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.lucasnvs.siboon.data.source.remote.LoginRequest;
 import com.lucasnvs.siboon.data.source.remote.LoginResponse;
@@ -13,9 +14,9 @@ import com.lucasnvs.siboon.model.User;
 import org.json.JSONObject;
 
 import java.net.ProtocolException;
+import java.util.Objects;
 
 import io.reactivex.rxjava3.core.Single;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.HttpException;
 
@@ -31,21 +32,21 @@ public class UserRepository {
 
         if (throwable instanceof HttpException) {
             HttpException httpException = (HttpException) throwable;
-            ResponseBody errorBody = httpException.response().errorBody();
+            ResponseBody errorBody = Objects.requireNonNull(httpException.response()).errorBody();
 
             if (errorBody != null) {
                 try {
                     JSONObject jsonError = new JSONObject(errorBody.string());
                     errorMessage = jsonError.optString("message", "Erro desconhecido");
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Log.e("UserRepository", e.getMessage(), e);
                 }
             }
         }
 
         if (throwable instanceof ProtocolException) {
             ProtocolException protocolException = (ProtocolException) throwable;
-            protocolException.getCause().printStackTrace();
+            Log.e("UserRepository", Objects.requireNonNull(protocolException.getCause()).getMessage(), protocolException.getCause());
         }
 
         return errorMessage;

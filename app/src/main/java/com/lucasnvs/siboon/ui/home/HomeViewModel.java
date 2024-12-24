@@ -35,10 +35,6 @@ public class HomeViewModel extends ViewModel {
         mText.setValue("Seções de produtos");
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
-
     public LiveData<List<Product>> getProducts() {
         return products;
     }

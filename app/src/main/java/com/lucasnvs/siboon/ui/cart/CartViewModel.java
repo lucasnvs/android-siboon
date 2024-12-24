@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.lucasnvs.siboon.data.repository.ProductRepository;
-import com.lucasnvs.siboon.data.source.local.LocalCart;
 import com.lucasnvs.siboon.model.Cart;
 
 import java.util.List;

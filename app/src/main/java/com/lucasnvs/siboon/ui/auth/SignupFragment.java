@@ -18,12 +18,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.lucasnvs.siboon.R;
-import com.lucasnvs.siboon.databinding.FragmentLoginBinding;
 import com.lucasnvs.siboon.databinding.FragmentSignupBinding;
 
-import java.sql.Array;
-import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignupFragment extends Fragment {

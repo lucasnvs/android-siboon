@@ -9,7 +9,7 @@ public class LocalCart {
     @PrimaryKey
     private Long productId;
 
-    private int quantity = 0;
+    private int quantity;
 
     @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP")
     private String createdAt;

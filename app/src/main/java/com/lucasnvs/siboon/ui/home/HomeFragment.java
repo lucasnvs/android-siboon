@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.SectionRepository;
 import com.lucasnvs.siboon.databinding.FragmentHomeBinding;
 
@@ -29,7 +28,6 @@ public class HomeFragment extends Fragment {
     @SuppressLint("NotifyDataSetChanged")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         SectionRepository sectionRepository = new SectionRepository(requireContext());
-        //noinspection unchecked
         HomeViewModel homeViewModel = new ViewModelProvider(this, new ViewModelProvider.Factory() {
             @NonNull
             @Override
