@@ -5,6 +5,8 @@ public final class Constants {
         throw new UnsupportedOperationException("Cannot instantiate a utility class.");
     }
 
+    public static final String REGEX_VALID_PASSWORD = "^(?=.*\\d)(?=.*[!@#$%^&*()])(.{8,})$";
+
     // API
     public static final String BASE_URL = "http://10.0.2.2/siboon/";
 

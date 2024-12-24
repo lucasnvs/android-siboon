@@ -51,11 +51,19 @@ public class CartFragment extends Fragment {
         CartAdapter cartAdapter = new CartAdapter(getContext(), new ArrayList<>());
         binding.rvCart.setAdapter(cartAdapter);
 
-        // The Increase and Decrease buttons cause a bug: when clicked, the fragment reloads all the items in the cart.
+        // The Decrease and the Increase buttons cause a bug: when clicked, the fragment reloads all the items in the cart.
         cartViewModel.cart.observe(getViewLifecycleOwner(), cartList -> {
-            cartAdapter.setProducts(cartList);
-            binding.rvCart.setAdapter(cartAdapter);
+            Boolean isEmpty = cartList != null && cartList.isEmpty();
+
+            binding.tvEmptyCart.setVisibility(Boolean.TRUE.equals(isEmpty) ? View.VISIBLE : View.GONE);
+            binding.layoutCart.setVisibility(Boolean.TRUE.equals(isEmpty) ? View.GONE : View.VISIBLE);
+
+            if(!isEmpty) {
+                cartAdapter.setProducts(cartList);
+                binding.rvCart.setAdapter(cartAdapter);
+            }
         });
+
 
         cartViewModel.errorLiveData.observe(getViewLifecycleOwner(), error -> {
             if (error != null) {

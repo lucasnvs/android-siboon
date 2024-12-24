@@ -62,6 +62,11 @@ public class LoginFragment extends Fragment {
         binding.buttonLogin.setOnClickListener(v -> {
             String loginAddress = String.valueOf(binding.editTextEmailCpf.getText());
             String password = String.valueOf(binding.editTextPassword.getText());
+
+            if(loginAddress.isEmpty() || password.isEmpty()) {
+                Toast.makeText(context, "Nenhum campo pode estar vazio.", Toast.LENGTH_SHORT).show();
+            }
+
             loginViewModel.login(loginAddress, password);
         });
 

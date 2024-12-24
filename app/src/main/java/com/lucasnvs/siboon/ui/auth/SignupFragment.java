@@ -1,7 +1,10 @@
 package com.lucasnvs.siboon.ui.auth;
 
+import static com.lucasnvs.siboon.utils.Constants.REGEX_VALID_PASSWORD;
+
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,11 @@ import androidx.navigation.Navigation;
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.databinding.FragmentLoginBinding;
 import com.lucasnvs.siboon.databinding.FragmentSignupBinding;
+
+import java.sql.Array;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignupFragment extends Fragment {
     private FragmentSignupBinding binding;
@@ -37,12 +45,14 @@ public class SignupFragment extends Fragment {
         binding = FragmentSignupBinding.inflate(inflater, container, false);
 
         binding.buttonSignup.setOnClickListener(v -> {
-            signupViewModel.signup(
-                    String.valueOf(binding.editTextName.getText()),
-                    String.valueOf(binding.editTextLastName.getText()),
-                    String.valueOf(binding.editTextEmail.getText()),
-                    String.valueOf(binding.editTextPasswordSignup.getText())
-            );
+            String name = String.valueOf(binding.editTextName.getText());
+            String lastName = String.valueOf(binding.editTextLastName.getText());
+            String email = String.valueOf(binding.editTextEmail.getText());
+            String password = String.valueOf(binding.editTextPasswordSignup.getText());
+
+            if (validateForm(name, lastName, email, password)) {
+                signupViewModel.signup(name, lastName, email, password);
+            }
         });
 
         signupViewModel.loginResponse.observe(getViewLifecycleOwner(), loginResponse -> {
@@ -59,6 +69,30 @@ public class SignupFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+
+    private Boolean validateForm(String name, String lastName, String email, String password) {
+
+        String[] fields = new String[]{name, lastName, email, password};
+        for (String field : fields) {
+            if (field.isEmpty()) {
+                Toast.makeText(context, "Todos os campos devem ser preenchidos.", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(context, "O E-mail inserido é inválido.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!Pattern.compile(REGEX_VALID_PASSWORD).matcher(password).matches()) {
+            Toast.makeText(context, "A senha deve ter no mínimo 8 caracteres, contendo pelo menos um caractere especial e um número.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 
     @Override
