@@ -107,11 +107,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void upsertOnCart(Product product) {
         Log.d("ProductAdapter", "Product Id:" + product.getId());
         compositeDisposable.add(
-                new ProductRepository(context).upsertCartProduct(product, 1)
+                new ProductRepository(context).upsertCartProduct(product.getId(), 1)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                () -> Log.d("ProductAdapter", "Produto adicionado ao carrinho com sucesso!"),
+                                response -> {
+                                    Log.d("ProductAdapter", "Produto adicionado ao carrinho com sucesso!");
+                                },
                                 throwable -> Log.e("ProductAdapter", "Erro ao adicionar produto ao carrinho.", throwable))
         );
     }

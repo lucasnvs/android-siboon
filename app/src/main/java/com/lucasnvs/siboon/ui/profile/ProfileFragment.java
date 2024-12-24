@@ -60,8 +60,6 @@ public class ProfileFragment extends Fragment {
                     .into(binding.imgProfileAvatar);
         });
 
-
-
         setupListeners(profileViewModel);
     }
 

@@ -6,7 +6,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.lucasnvs.siboon.data.repository.ProductRepository;
-import com.lucasnvs.siboon.model.Product;
+import com.lucasnvs.siboon.data.source.local.LocalCart;
+import com.lucasnvs.siboon.model.Cart;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class CartViewModel extends ViewModel {
 
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private final ProductRepository productRepository;
-    public final MutableLiveData<List<Product>> cart = new MutableLiveData<>();
+    public final MutableLiveData<List<Cart>> cart = new MutableLiveData<>();
 
     public final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
 

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.ProductRepository;
+import com.lucasnvs.siboon.model.Cart;
 import com.lucasnvs.siboon.model.Product;
 import com.lucasnvs.siboon.utils.Constants;
 import com.squareup.picasso.Picasso;
@@ -28,28 +29,45 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
 
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-    public final List<Product> cart;
+    public final List<Cart> carts;
     private final Context context;
 
-    public CartAdapter(Context context, List<Product> cart) {
+    private ProductRepository productRepository;
+
+    public CartAdapter(Context context, List<Cart> cart) {
         this.context = context;
-        this.cart = cart;
+        this.carts = cart;
     }
+
+    @Override
+    public void onViewRecycled(@NonNull CartViewHolder holder) {
+        super.onViewRecycled(holder);
+        compositeDisposable.clear();
+    }
+
 
     @NonNull
     @Override
     public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_cart, parent, false);
+
+
         return new CartViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
-        Product product = cart.get(position);
+        Cart cart = carts.get(position);
+        Product product = cart.getProduct();
+
         holder.title.setText(product.getTitle());
         holder.price.setText(String.format("R$ %.2f", product.getPrice()));
         holder.installment.setText(String.format("Parcelado no cartão em até %dx", product.getInstallments()));
+        holder.quantity.setText(String.valueOf(cart.getQuantity()));
+
+
+        productRepository = new ProductRepository(context);
 
         Picasso.get().load(Constants.BASE_URL + product.getImageSrc())
                 .placeholder(R.drawable.placeholder_image)
@@ -58,22 +76,42 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         holder.btnRemove.setOnClickListener(v -> removeOnCart(product));
 
-//        holder.btnDecrease.setOnClickListener(v -> {
-//            holder.quantity.setText(
-//                    Integer.parseInt((String) holder.quantity.getText()) + 1
-//            );
-//        });
-//
-//        holder.btnIncrease.setOnClickListener(v -> {
-//            holder.quantity.setText(
-//                    Integer.parseInt((String) holder.quantity.getText()) - 1
-//            );
-//        });
+        holder.btnDecrease.setOnClickListener(v -> {
+            compositeDisposable.add(
+                    productRepository.decreaseCartProduct(product.getId(), 1)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(
+                                    quantity -> {
+                                        holder.quantity.setText(String.valueOf(quantity));
+                                    },
+                                    throwable -> {
+                                        Toast.makeText(context, "Erro ao remover produto do carrinho.", Toast.LENGTH_LONG).show();
+                                        Log.e("CartAdapter", "Erro ao remover produto do carrinho.", throwable);
+                                    })
+            );
+        });
+
+        holder.btnIncrease.setOnClickListener(v -> {
+            compositeDisposable.add(
+                    productRepository.upsertCartProduct(product.getId(), 1)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(
+                                    response -> {
+                                        holder.quantity.setText(String.valueOf(response.getQuantity()));
+                                    },
+                                    throwable -> {
+                                        Log.e("CartAdapter", "Erro ao adicionar produto ao carrinho.", throwable);
+                                    }
+                            )
+            );
+        });
     }
 
     @Override
     public int getItemCount() {
-        return cart.size();
+        return carts.size();
     }
 
     static class CartViewHolder extends RecyclerView.ViewHolder {
@@ -99,15 +137,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         }
     }
 
-    public void setProducts(List<Product> products) {
-        this.cart.clear();
-        this.cart.addAll(products);
+    public void setProducts(List<Cart> products) {
+        this.carts.clear();
+        this.carts.addAll(products);
     }
 
     public void removeOnCart(Product product) {
         Log.d("CartAdapter", "Product Id:" + product.getId());
         compositeDisposable.add(
-                new ProductRepository(context).deleteById(product.getId())
+                productRepository.deleteById(product.getId())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(

@@ -10,6 +10,7 @@ import androidx.room.Update;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Maybe;
 
 @Dao
 public interface CartDAO {
@@ -17,7 +18,7 @@ public interface CartDAO {
     Flowable<List<LocalCart>> getAllCart();
 
     @Query("SELECT * FROM cart WHERE productId = :productId LIMIT 1")
-    LocalCart getCartByProductId(Long productId);
+    Maybe<LocalCart> getCartByProductId(Long productId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCart(LocalCart localCart);

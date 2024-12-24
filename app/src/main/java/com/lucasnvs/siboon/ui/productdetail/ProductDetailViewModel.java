@@ -41,11 +41,13 @@ public class ProductDetailViewModel extends ViewModel {
     public void addToCart() {
         Log.d("ProductDetailViewModel", "Product Id:" + Objects.requireNonNull(product.getValue()).getId());
         compositeDisposable.add(
-                productRepository.upsertCartProduct(product.getValue(), 1)
+                productRepository.upsertCartProduct(product.getValue().getId(), 1)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                () -> productAddedToCart.setValue(true),
+                                response -> {
+                                    productAddedToCart.setValue(true);
+                                },
                                 throwable -> errorLiveData.postValue("Erro ao adicionar produto ao carrinho.")
                         )
         );

@@ -65,6 +65,9 @@ public class ProductDetailFragment extends Fragment {
         productDetailViewModel.productAddedToCart.observe(getViewLifecycleOwner(), added -> {
             if (added != null && added) {
                 Toast.makeText(getContext(), "Produto adicionado ao carrinho com sucesso!", Toast.LENGTH_SHORT).show();
+
+                NavController navController = Navigation.findNavController(requireView());
+                navController.navigate(R.id.navigation_cart);
             }
         });
 
