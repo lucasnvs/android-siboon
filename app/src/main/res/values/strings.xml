@@ -6,17 +6,23 @@
     <string name="title_login">Login</string>
     <string name="title_signup">Registro</string>
     <string name="password">Senha</string>
-    <string name="signup_has_registration"><u>Ja possui cadastro?</u></string>
-    <string name="login_new_registration"><u>Novo na Siboon? CADASTRE-SE</u></string>
-    <string name="signup_title">FAZER CADASTRO</string>
-    <string name="signup_et_name">Nome</string>
-    <string name="signup_et_lastname">Sobrenome</string>
-    <string name="signup_et_email">E-mail</string>
+    <string name="new_at_siboon">Novo na Siboon?</string>
+    <string name="register"><u>CADASTRE-SE</u></string>
+
+    <string name="signup_title">CRIAR CONTA</string>
+    <string name="signup_et_name">Nome *</string>
+    <string name="signup_et_lastname">Sobrenome *</string>
+    <string name="signup_et_email">E-mail *</string>
+    <string name="signup_et_password">Senha *</string>
     <string name="signup_btn_register">CADASTRAR</string>
-    <string name="login_title">FAZER LOGIN</string>
+    <string name="signup_has_registration">Já possui cadastro?</string>
+    <string name="signup_enter"><u>ENTRAR</u></string>
+
+    <string name="login_title">ACESSE SUA CONTA</string>
     <string name="login_btn">ENTRAR</string>
     <string name="user_picture">Foto do usuário</string>
     <string name="buy">Comprar</string>
     <string name="localCart">Carrinho</string>
     <string name="loading">Carregando...</string>
+    <string name="e_mail">E-mail</string>
 </resources>

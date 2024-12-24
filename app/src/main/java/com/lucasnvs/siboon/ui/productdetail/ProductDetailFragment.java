@@ -10,9 +10,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.ProductRepository;
@@ -20,6 +23,8 @@ import com.lucasnvs.siboon.databinding.FragmentProductDetailBinding;
 import com.lucasnvs.siboon.model.Product;
 import com.lucasnvs.siboon.utils.Constants;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 
 public class ProductDetailFragment extends Fragment {
@@ -40,6 +45,8 @@ public class ProductDetailFragment extends Fragment {
         }).get(ProductDetailViewModel.class);
 
         binding = FragmentProductDetailBinding.inflate(inflater, container, false);
+
+        setToolbar();
 
         productDetailViewModel.errorLiveData.observe(getViewLifecycleOwner(), error -> {
             if (error != null) {
@@ -76,6 +83,21 @@ public class ProductDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = binding.toolbar;
+        toolbar.setTitle("Detalhes");
+        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24);
+
+        if (toolbar.getNavigationIcon() != null) {
+            toolbar.getNavigationIcon().setTint(getResources().getColor(R.color.white, requireActivity().getTheme()));
+        }
+
+        toolbar.setNavigationOnClickListener(view -> {
+            NavController navController = Navigation.findNavController(view);
+            navController.popBackStack(R.id.navigation_home, false);
+        });
     }
 
     private void updateUI(@NonNull Product product) {

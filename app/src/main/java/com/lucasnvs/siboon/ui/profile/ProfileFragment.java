@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
@@ -46,6 +47,8 @@ public class ProfileFragment extends Fragment {
                 return (T) new ProfileViewModel(userRepository);
             }
         }).get(ProfileViewModel.class);
+
+        setToolbar();
 
         profileViewModel.getUser().observe(getViewLifecycleOwner(), user -> {
             binding.tvProfileName.setText(user.getName());
@@ -90,6 +93,10 @@ public class ProfileFragment extends Fragment {
         navController.navigate(R.id.navigation_login);
     }
 
+    private void setToolbar() {
+        Toolbar toolbar = binding.toolbar;
+        toolbar.setTitle("Perfil");
+    }
 
     @Override
     public void onDestroyView() {

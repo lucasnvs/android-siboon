@@ -9,11 +9,13 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.lucasnvs.siboon.R;
 import com.lucasnvs.siboon.data.repository.SectionRepository;
 import com.lucasnvs.siboon.databinding.FragmentHomeBinding;
 
@@ -40,6 +42,8 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        setToolbar();
+
         binding.recyclerViewSections.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         sectionAdapter = new SectionAdapter(getContext(), new ArrayList<>());
         binding.recyclerViewSections.setAdapter(sectionAdapter);
@@ -59,6 +63,11 @@ public class HomeFragment extends Fragment {
         homeViewModel.loadSections();
 
         return root;
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = binding.toolbar;
+        toolbar.setTitle("Inicio");
     }
 
     @Override

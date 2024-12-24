@@ -60,4 +60,14 @@ public class SignupFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.textViewLoginLink.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(view);
+            navController.navigate(R.id.navigation_login);
+        });
+    }
 }

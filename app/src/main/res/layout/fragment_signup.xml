@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:padding="16dp"
-    android:theme="@style/Theme.App.NoActionBar">
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,7 +22,12 @@
         android:autofillHints=""
         android:hint="@string/signup_et_name"
         android:layout_marginBottom="8dp"
-        android:inputType="text" />
+        android:inputType="text"
+        android:background="@drawable/sel_input"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#8A8A8A"/>
 
     <EditText
         android:id="@+id/editTextLastName"
@@ -32,23 +36,40 @@
         android:autofillHints=""
         android:hint="@string/signup_et_lastname"
         android:layout_marginBottom="8dp"
-        android:inputType="text" />
+        android:inputType="text"
+        android:background="@drawable/sel_input"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#8A8A8A"/>
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="" android:hint="@string/signup_et_email"
+        android:autofillHints=""
+        android:hint="@string/signup_et_email"
         android:inputType="textEmailAddress"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/sel_input"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#8A8A8A"/>
 
     <EditText
         android:id="@+id/editTextPasswordSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="" android:hint="@string/password"
+        android:autofillHints=""
+        android:hint="@string/signup_et_password"
         android:inputType="textPassword"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/sel_input"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#8A8A8A"/>
 
     <Button
         android:id="@+id/buttonSignup"
@@ -58,12 +79,34 @@
         android:backgroundTint="@color/app_principal_color"
         android:textColor="#FFFFFF"/>
 
-    <TextView
+    <com.google.android.material.divider.MaterialDivider
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/signup_has_registration"
-        android:textColor="@color/app_principal_color"
-        android:textSize="14sp"
         android:layout_marginTop="24dp"
-        android:id="@+id/textViewSignupLink"/>
+        android:layout_marginBottom="24dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_has_registration"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textViewLoginLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_enter"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/app_principal_color"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
 </LinearLayout>
