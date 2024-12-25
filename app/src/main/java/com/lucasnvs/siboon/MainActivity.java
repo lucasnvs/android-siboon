@@ -26,10 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupWithNavController(navView, navController);
 
-
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-//            setToolbarVisibility(destination.getId());
-
             if (destination.getId() == R.id.navigation_profile) {
                 if (!new SessionManager(this.getApplicationContext()).isLoggedIn()) {
                     navController.navigate(R.id.navigation_login);
